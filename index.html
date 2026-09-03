@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Cantinho</title>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffe6f0, #ffd1e6);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+        }
+
+        .caixa {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            width: 320px;
+            margin: 20px auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        input {
+            padding: 12px;
+            width: 80%;
+            border: 2px solid #ff4d88;
+            border-radius: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #ff4d88;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(255,77,136,0.3);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #e60073;
+            transform: scale(1.05);
+        }
+
+        img {
+            transition: transform 0.3s;
+            border: 4px solid white;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* =========================
+           SLIDES
+        ========================= */
+
+        #surpresa {
+            display: none;
+        }
+
+        #surpresa h1 {
+            color: #d63384;
+            font-size: 36px;
+        }
+
+        #foto {
+            width: 60%;
+            max-width: 600px;
+            max-height: 70vh;
+            object-fit: contain;
+
+            border: 4px solid white;
+            border-radius: 20px;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+            opacity: 1;
+
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        #mensagem {
+            color: #d63384;
+            font-size: 21px;
+            font-weight: bold;
+            margin: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- =========================
+         CAPA ORIGINAL
+    ========================= -->
+
+    <div id="capa">
+
+        <h1>💖 Bem-vinda ao nosso cantinho 💖</h1>
+
+        <p>Digite nossa data pra entrar ❤️</p>
+
+        <!-- CAIXA DA DATA -->
+
+        <div class="caixa">
+
+            <input
+                type="text"
+                id="data"
+                placeholder="00/00/0000"
+                required
+            >
+
+            <br>
+
+            <button onclick="entrar()">Entrar ❤️</button>
+
+            <p id="erro"></p>
+
+        </div>
+
+
+        <!-- GALERIA DE FOTOS DA CAPA -->
+
+        <div style="
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        ">
+
+            <img
+                src="static/imagem.JPG"
+                width="230"
+                alt="Nós dois"
+            >
+
+            <img
+                src="static/IMG_2.JPG"
+                width="230"
+                alt="Foto 2"
+            >
+
+            <img
+                src="static/IMG_3.JPG"
+                width="230"
+                alt="Foto 3"
+            >
+
+            <img
+                src="static/IMG_4.JPG"
+                width="230"
+                alt="Foto 4"
+            >
+
+        </div>
+
+
+        <!-- MÚSICA DA CAPA -->
+
+        <p>Se quiser ouvir um pouquinho antes de entrar 🎵</p>
+
+        <audio id="musica" controls loop>
+
+            <source
+                src="static/musica.mp3"
+                type="audio/mpeg"
+            >
+
+            Seu navegador não suporta áudio.
+
+        </audio>
+
+    </div>
+
+
+
+    <!-- =========================
+         SLIDESHOW
+    ========================= -->
+
+    <div id="surpresa">
+
+        <h1>💖 Nossa História 💖</h1>
+
+        <p id="mensagem">
+            Tudo começou no dia 05/04/2026... ❤️
+        </p>
+
+        <img
+            id="foto"
+            src="static/imagem.JPG"
+            alt="Nossa foto"
+        >
+
+    </div>
+
+
+
+    <script>
+
+
+        /* =========================
+           FOTOS DO SLIDE
+        ========================= */
+
+        const fotos = [
+
+            "static/imagem.JPG",
+            "static/IMG_2.JPG",
+            "static/IMG_3.JPG",
+            "static/IMG_4.JPG",
+            "static/IMG_5.JPG",
+            "static/IMG_6.JPG",
+            "static/IMG_7.JPG",
+            "static/IMG_8.JPG",
+            "static/IMG_9.JPG",
+            "static/IMG_10.JPG",
+            "static/IMG_11.JPG",
+            "static/IMG_12.JPG",
+            "static/IMG_13.JPG",
+            "static/IMG_14.JPG",
+            "static/IMG_15.JPG",
+            "static/IMG_16.JPG",
+            "static/IMG_17.JPG",
+            "static/IMG_18.JPG",
+            "static/IMG_19.JPG",
+            "static/IMG_20.JPG",
+            "static/IMG_21.JPG",
+            "static/IMG_22.JPG",
+            "static/IMG_23.JPG",
+            "static/IMG_24.JPG",
+            "static/IMG_25.JPG",
+            "static/IMG_26.JPG",
+            "static/IMG_27.JPG",
+            "static/IMG_28.JPG",
+            "static/IMG_29.JPG",
+            "static/IMG_30.JPG",
+            "static/IMG_31.JPG",
+            "static/IMG_32.JPG",
+            "static/IMG_33.JPG",
+            "static/IMG_35.JPG",
+            "static/IMG_36.JPG",
+            "static/IMG_37.JPG",
+
+
+
+
+        ];
+
+
+        let fotoAtual = 0;
+
+        let slideshowIniciado = false;
+
+
+
+        /* =========================
+           ENTRAR
+        ========================= */
+
+        function entrar() {
+
+            const data =
+                document.getElementById("data").value.trim();
+
+            const erro =
+                document.getElementById("erro");
+
+
+            /* DATA CORRETA */
+
+            if (data === "05/04/2026") {
+
+
+                /* Esconde a capa */
+
+                document.getElementById("capa").style.display = "none";
+
+
+                /* Mostra o slideshow */
+
+                document.getElementById("surpresa").style.display = "block";
+
+
+                /* Tenta iniciar a música */
+
+                const musica =
+                    document.getElementById("musica");
+
+                musica.play().catch(function(error) {
+
+                    console.log(
+                        "Não foi possível iniciar a música:",
+                        error
+                    );
+
+                });
+
+
+                /* Inicia o slideshow */
+
+                iniciarSlideshow();
+
+
+            } else {
+
+                /* DATA ERRADA */
+
+                erro.textContent =
+                    "Data incorreta 😢 Tente novamente.";
+
+            }
+
+        }
+
+
+
+        /* =========================
+           SLIDESHOW
+        ========================= */
+
+        function iniciarSlideshow() {
+
+            if (slideshowIniciado) {
+                return;
+            }
+
+            slideshowIniciado = true;
+
+
+            setInterval(function() {
+
+                const foto =
+                    document.getElementById("foto");
+
+
+                /* Desaparece */
+
+                foto.style.opacity = "0";
+
+
+                setTimeout(function() {
+
+
+                    /* Próxima foto */
+
+                    fotoAtual++;
+
+
+                    if (fotoAtual >= fotos.length) {
+
+                        fotoAtual = 0;
+
+                    }
+
+
+                    /* Troca a imagem */
+
+                    foto.src = fotos[fotoAtual];
+
+
+                    /* Aparece novamente */
+
+                    foto.style.opacity = "1";
+
+
+                }, 800);
+
+
+            }, 4000);
+
+        }
+
+    </script>
+
+</body>
+</html>
